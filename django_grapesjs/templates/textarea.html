@@ -1,0 +1,26 @@
+{% load grapesjs_tags %}
+
+<textarea hidden name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+{% if widget.value %}{{ widget.value|safe }}{% else %}{{ widget.get_render_html_value|safe }}{% endif %}</textarea>
+
+<div id="gjs"></div>
+
+<script type="text/javascript">
+  var editor = grapesjs.init({
+      container : '#gjs',
+      style: '.txt-red{color: red}',
+      plugins: ['gjs-preset-newsletter'],
+      pluginsOpts: {
+        'gjs-preset-newsletter': {
+          modalTitleImport: 'Import template',
+        }
+      }
+  });
+
+  if ({% get_default_models_data %}) {
+      editor.setComponents(document.getElementById("field-gjs").value);
+  }
+
+</script>
+
+
