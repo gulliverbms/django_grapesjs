@@ -2,12 +2,12 @@
 
 <textarea hidden name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
 {% if widget.value %}{{ widget.value|safe }}{% else %}{{ widget.get_render_html_value|safe }}{% endif %}</textarea>
-
-<div id="gjs"></div>
+<div hidden name='get-all-id'>{{ widget.attrs.id }}</div>
+<div id="gjs-{{ widget.attrs.id }}"></div>
 
 <script type="text/javascript">
-  var editor = grapesjs.init({
-      container : '#gjs',
+  var editor_{{ widget.attrs.id }} = grapesjs.init({
+      container : '#gjs-{{ widget.attrs.id }}',
       style: '.txt-red{color: red}',
       plugins: ['gjs-preset-newsletter'],
       pluginsOpts: {
@@ -18,7 +18,7 @@
   });
 
   if ({% get_default_models_data %}) {
-      editor.setComponents(document.getElementById("field-gjs").value);
+      editor_{{ widget.attrs.id }}.setComponents(document.getElementById("{{ widget.attrs.id }}").value);
   }
 
 </script>
