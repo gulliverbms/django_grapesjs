@@ -27,17 +27,13 @@ class GrapesJsWidget(forms.Textarea):
             'https://unpkg.com/grapesjs-preset-newsletter',
         ]
 
-    def __init__(self, attrs=None):
-        if attrs is None:
-            attrs = {}
-        
-        attrs['id'] = 'field-gjs'
-
-        super().__init__(attrs)
+    def get_formated_value_id(self, value_id):
+        return value_id.replace('-', '_')
 
     def get_context(self, name, value, attrs):
         context = super().get_context(name, value, attrs)
-        
+
+        context['widget']['attrs']['id'] = self.get_formated_value_id(context['widget']['attrs']['id'])
         context['widget'].update({'get_render_html_value': self.get_render_html_value(self.default_html)})
 
         return context

@@ -79,12 +79,17 @@
 {% endblock %}
 <script>
     function setHtmlInTheField() {
-        field = document.getElementById("field-gjs");
-        if ({% get_save_css_value %}) {
-            field.value = editor.getCss()
-        }
-        else {
-            field.value = editor.getHtml();
+        all_id = document.getElementsByName("get-all-id");
+
+        for (i=0; i<all_id.length; i++){
+            field = document.getElementById(all_id[i].textContent);
+
+            if ({% get_save_css_value %}) {
+                field.value = this["editor_" + all_id[i].textContent].getCss()
+            }
+            else {
+                field.value = this["editor_" + all_id[i].textContent].getHtml();
+            }
         }
     }
 
