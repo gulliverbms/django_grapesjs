@@ -11,7 +11,7 @@ def read(fname):
 setup(
     name = 'django_grapesjs',
     packages = find_packages(exclude=('example*',)),
-    include_package_data=True,
+    include_package_data = True,
     version = __version__,
     description = 'A small library for integrating the page builder "grapesjs" into django admin',
     author = 'Mark Burkut',

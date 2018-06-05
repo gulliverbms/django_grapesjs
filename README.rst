@@ -52,10 +52,16 @@ Just import the field and add to your model
         # default_html - path to the html file to display the default value
         # for the field when the form page is received
         html = GrapesJsHtmlField(default_html='default.html')
-        ...
 
         # or default - if the page is simply static
         html = GrapesJsHtmlField(default=render_to_string('default.html'))
+        ...
+
+        # use the redactor_config argument to select the configuration of the editor
+        # Available:
+        #     - redactor_config='base' - basic setting, most widgets are used
+        #     - redactor_config='min' - minimum setting, only the most necessary
+        html = GrapesJsHtmlField(redactor_config='base')
 
 Custom Settings
 ===============
@@ -69,7 +75,14 @@ Custom Settings
     GRAPESJS_DEFAULT_MODELS_DATA = True  # default value
 
     # redefine the path to the html file, the markup from this file will be used by default
-    GRAPESJS_DEFAULT_HTML = 'default.html'  # default value
+    GRAPESJS_DEFAULT_HTML = 'django_grapesjs/default.html'  # default value
+
+    # Add or redefine the configuration of the editor
+    REDACTOR_CONFIG = {'base': 'django_grapesjs/redactor_config/base.html'}  # default value
+
+Warning
+===============
+the library does not work in "inlines"
 
 Reference
 ===============
