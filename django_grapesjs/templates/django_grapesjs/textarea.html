@@ -1,0 +1,22 @@
+{% load grapesjs_tags %}
+
+<textarea hidden name="{{ widget.name }}" {% include "django/forms/widgets/attrs.html" %}>
+{% if widget.value %}{{ widget.value|safe }}{% else %}{{ widget.get_render_html_value|safe }}{% endif %}</textarea>
+<div hidden name='get-all-id'>{{ widget.attrs.id }}</div>
+<div id="gjs-{{ widget.attrs.id }}"></div>
+
+{% include widget.html_name_init_conf %}
+
+<script type="text/javascript">
+    // тут обновить initData ==> container: '#gjs-{{ widget.attrs.id }}',
+    this["initData" + "{{ widget.attrs.id }}"]['container'] = '#gjs-{{ widget.attrs.id }}';
+
+    var editor_{{ widget.attrs.id }} = grapesjs.init(this["initData" + "{{ widget.attrs.id }}"]);
+
+    if ({% get_default_models_data %}) {
+        editor_{{ widget.attrs.id }}.setComponents(document.getElementById("{{ widget.attrs.id }}").value);
+    }
+
+</script>
+
+
