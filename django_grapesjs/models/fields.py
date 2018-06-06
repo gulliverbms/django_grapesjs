@@ -17,15 +17,15 @@ class GrapesJsHtmlField(models.TextField):
                  auto_now_add=False, default_html=GRAPESJS_DEFAULT_HTML,
                  redactor_config=BASE, **kwargs):
         self.default_html = default_html
-        self.html_name_init_data = REDACTOR_CONFIG[redactor_config]
+        self.html_name_init_conf = REDACTOR_CONFIG[redactor_config]
 
         super().__init__(verbose_name, name, **kwargs)
 
     def formfield(self, **kwargs):
         kwargs['form_class'] = GrapesJsField
         kwargs['widget'] = GrapesJsWidget
-        setattr(kwargs['widget'], 'default_html', self.default_html)
-        setattr(kwargs['widget'], 'html_name_init_data', self.html_name_init_data)
+        kwargs['default_html'] = self.default_html
+        kwargs['html_name_init_conf'] = self.html_name_init_conf
 
         return super().formfield(**kwargs)
 

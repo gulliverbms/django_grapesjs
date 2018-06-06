@@ -44,7 +44,7 @@ class GrapesJsWidget(forms.Textarea):
 
         context['widget']['attrs']['id'] = self.get_formated_value_id(context['widget']['attrs']['id'])
         context['widget'].update({'get_render_html_value': self.get_render_html_value(self.default_html)})
-        context['widget'].update({'html_name_init_data': self.html_name_init_data})
+        context['widget'].update({'html_name_init_conf': self.html_name_init_conf})
 
         return context
 

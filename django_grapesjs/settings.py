@@ -13,7 +13,6 @@ GRAPESJS_DEFAULT_MODELS_DATA = int(getattr(settings, 'GRAPESJS_DEFAULT_MODELS_DA
 # redefine the path to the html file, the markup from this file will be used by default
 GRAPESJS_DEFAULT_HTML = getattr(settings, 'GRAPESJS_DEFAULT_HTML', 'django_grapesjs/default.html')
 
-
 MIN = 'min'
 BASE = 'base'
 
