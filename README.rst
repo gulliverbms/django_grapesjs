@@ -78,7 +78,7 @@ but execute or display at the time editing in page builder - use this tag.
 For example, if your template that uses django or jinja tags does not have any styles or javascript
 (because they are in another place, for example, in "footer.html"), you can put css and js in this
 tag, styles and javascript code in the editor will work, but when saved and used on the site there
-will not be duplicate scripts and css.
+will not be repeating fragments
 
 .. code-block:: HTML
 
