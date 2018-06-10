@@ -1,4 +1,5 @@
 from django.db import models
+
 from django_grapesjs.forms.widgets import GrapesJsWidget
 from django_grapesjs.forms.fields import GrapesJsField
 from django_grapesjs.settings import BASE, GRAPESJS_DEFAULT_HTML, REDACTOR_CONFIG

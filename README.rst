@@ -62,6 +62,31 @@ Just import the field and add to your model
         #     - redactor_config='base' - basic setting, most widgets are used
         #     - redactor_config='min' - minimum setting, only the most necessary
         html = GrapesJsHtmlField(redactor_config='base')
+        ...
+
+        # use apply_django_tag = True, if you want to apply render django or jinja tags
+        html = GrapesJsHtmlField(default_html='default.html', apply_django_tag=True)
+
+You can use special tags in your templates, for flexible customization
+
+.. code-block:: HTML
+
+   <ignore></ignore>
+
+If you need to comment out some of the html code during the save,
+but execute or display at the time editing in page builder - use this tag.
+For example, if your template that uses django or jinja tags does not have any styles or javascript
+(because they are in another place, for example, in "footer.html"), you can put css and js in this
+tag, styles and javascript code in the editor will work, but when saved and used on the site there
+will not be duplicate scripts and css.
+
+.. code-block:: HTML
+
+   <hidden></hidden>
+
+If you are editing in the editor with apply_django_tag, you might be distracted by the additional:
+{% exclude %}, {% include %}, {% for <expression> %}, etc; - use this tag. He temporarily hides
+information, embedded in it during editing, and during the save returns to the original form
 
 Custom Settings
 ===============

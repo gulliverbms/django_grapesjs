@@ -1,17 +1,16 @@
-from django_grapesjs.settings import GRAPESJS_SAVE_CSS, GRAPESJS_DEFAULT_MODELS_DATA
 from django import template
+from django.utils.safestring import mark_safe
+
+from django_grapesjs import settings
 
 
 register = template.Library()
 
 
 @register.simple_tag
-def get_save_css_value():
-    return GRAPESJS_SAVE_CSS
+def get_settings_value(name, safe=False):
+    if not safe:
+        return getattr(settings, name)
 
-
-@register.simple_tag
-def get_default_models_data():
-    return GRAPESJS_DEFAULT_MODELS_DATA
-
+    return mark_safe(str(getattr(settings, name)))
 

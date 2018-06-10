@@ -8,13 +8,19 @@
 {% include widget.html_name_init_conf %}
 
 <script type="text/javascript">
-    // тут обновить initData ==> container: '#gjs-{{ widget.attrs.id }}',
     this["initData" + "{{ widget.attrs.id }}"]['container'] = '#gjs-{{ widget.attrs.id }}';
-
     var editor_{{ widget.attrs.id }} = grapesjs.init(this["initData" + "{{ widget.attrs.id }}"]);
 
-    if ({% get_default_models_data %}) {
-        editor_{{ widget.attrs.id }}.setComponents(document.getElementById("{{ widget.attrs.id }}").value);
+    if ({% get_settings_value "GRAPESJS_DEFAULT_MODELS_DATA" True %}) {
+        editor_{{ widget.attrs.id }}.setComponents(
+            replaceTag(
+                normalizeData(document.getElementById("{{ widget.attrs.id }}").value, false),
+                [
+                    {% get_settings_value "REPLACE_INIT_IGNORE_TAGS" safe=True %},
+                    {% get_settings_value "REPLACE_INIT_HIDDEN_TAGS" safe=True %},
+                ]
+            )
+        );
     }
 
 </script>
