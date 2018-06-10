@@ -23,5 +23,30 @@ REDACTOR_CONFIG = {
     **getattr(settings, 'REDACTOR_CONFIG', {})
 }
 
-STATIC_URL = getattr(settings, 'STATIC_URL', '/static/')
+TEMPLATE_DIR = getattr(settings, 'TEMPLATE_DIR', 'templates')
+STATIC_URL = getattr(settings, 'STATIC_URL', "/static/")
+
+# you can override the name of tags
+NAME_IGNORE_TAG = getattr(settings, 'NAME_IGNORE_TAG', 'ignore')
+NAME_HIDDEN_TAG = getattr(settings, 'NAME_HIDDEN_TAG', 'hidden')
+
+
+REPLACE_SAVE_IGNORE_TAGS = {
+    '<%s>' % NAME_IGNORE_TAG: '{# <%s>' % NAME_IGNORE_TAG,
+    '</%s>' % NAME_IGNORE_TAG: '</%s> #}' % NAME_IGNORE_TAG,
+}
+REPLACE_INIT_IGNORE_TAGS = {
+    '{# <%s>' % NAME_IGNORE_TAG: '<%s>' % NAME_IGNORE_TAG,
+    '</%s> #}' % NAME_IGNORE_TAG: '</%s>' % NAME_IGNORE_TAG,
+}
+
+REPLACE_SAVE_HIDDEN_TAGS = {
+    '<div hidden=""><%s>' % NAME_HIDDEN_TAG: '<%s>' % NAME_HIDDEN_TAG,
+    '</%s></div>' % NAME_HIDDEN_TAG: '</%s>' % NAME_HIDDEN_TAG,
+}
+REPLACE_INIT_HIDDEN_TAGS = {
+    '<%s>' % NAME_HIDDEN_TAG: '<div hidden=""><%s>' % NAME_HIDDEN_TAG,
+    '</%s>' % NAME_HIDDEN_TAG: '</%s></div>' % NAME_HIDDEN_TAG,
+}
+
 

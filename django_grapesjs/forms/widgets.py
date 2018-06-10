@@ -1,6 +1,8 @@
-from django_grapesjs.settings import GRAPESJS_TEMPLATE, STATIC_URL
-from django.template.loader import render_to_string
 from django import forms
+from django.template.loader import render_to_string
+
+from django_grapesjs.settings import GRAPESJS_TEMPLATE, STATIC_URL
+from django_grapesjs.template import template_source
 
 __all__ = (
     'GrapesJsWidget',
@@ -25,7 +27,6 @@ class GrapesJsWidget(forms.Textarea):
             )
         }
         js = [
-            '//static.filestackapi.com/v3/filestack.js',
             '//feather.aviary.com/imaging/v3/editor.js',
             STATIC_URL + 'js/django_grapesjs/grapes.js',
             STATIC_URL + 'js/django_grapesjs/grapesjs-aviary.min.js',
@@ -48,8 +49,11 @@ class GrapesJsWidget(forms.Textarea):
 
         return context
 
-    def get_render_html_value(self, default_html):
+    def get_render_html_value(self, default_html, apply_django_tag=False):
         def _get_render_html_value():
+            if not apply_django_tag:
+                return template_source.get_template(default_html).template
+
             return render_to_string(default_html)
 
         return _get_render_html_value
