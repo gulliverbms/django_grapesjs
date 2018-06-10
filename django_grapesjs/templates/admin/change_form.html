@@ -58,7 +58,7 @@
         for (var i=0; i<replaceTagsArray.length; i++) {
             for (var tag in replaceTagsArray[i]) {
                 if (replaceTagsArray[i].hasOwnProperty(tag)) {
-                    value = value.replace(tag, replaceTagsArray[i][tag]);
+                    value = value.replace(new RegExp(tag, 'g'), replaceTagsArray[i][tag]);
                 }
             }
         }
