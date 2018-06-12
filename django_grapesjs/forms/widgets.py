@@ -1,7 +1,7 @@
 from django import forms
 from django.template.loader import render_to_string
 
-from django_grapesjs.settings import GRAPESJS_TEMPLATE, STATIC_URL
+from django_grapesjs.settings import GRAPESJS_TEMPLATE
 from django_grapesjs.template import template_source
 
 __all__ = (
@@ -20,21 +20,21 @@ class GrapesJsWidget(forms.Textarea):
     class Media:
         css = {
             'all': (
-                STATIC_URL + 'css/django_grapesjs/grapes.min.css',
-                STATIC_URL + 'css/django_grapesjs/grapesjs-preset-newsletter.css',
-                STATIC_URL + 'css/django_grapesjs/grapesjs-preset-webpage.min.css',
-                STATIC_URL + 'css/django_grapesjs/grapesjs-plugin-filestack.css',
+                'css/django_grapesjs/grapes.min.css',
+                'css/django_grapesjs/grapesjs-preset-newsletter.css',
+                'css/django_grapesjs/grapesjs-preset-webpage.min.css',
+                'css/django_grapesjs/grapesjs-plugin-filestack.css',
             )
         }
         js = [
-            '//feather.aviary.com/imaging/v3/editor.js',
-            STATIC_URL + 'js/django_grapesjs/grapes.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-aviary.min.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-preset-newsletter.min.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-preset-webpage.min.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-lory-slider.min.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-tabs.min.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-plugin-filestack.min.js',
+            'js/django_grapesjs/feather-aviary-editor.js',
+            'js/django_grapesjs/grapes.js',
+            'js/django_grapesjs/grapesjs-aviary.min.js',
+            'js/django_grapesjs/grapesjs-preset-newsletter.min.js',
+            'js/django_grapesjs/grapesjs-preset-webpage.min.js',
+            'js/django_grapesjs/grapesjs-lory-slider.min.js',
+            'js/django_grapesjs/grapesjs-tabs.min.js',
+            'js/django_grapesjs/grapesjs-plugin-filestack.min.js',
         ]
 
     def get_formated_value_id(self, value_id):
