@@ -1,8 +1,9 @@
 from django import forms
 from django.template.loader import render_to_string
 
-from django_grapesjs.settings import GRAPESJS_TEMPLATE, STATIC_URL
+from django_grapesjs.settings import GRAPESJS_TEMPLATE
 from django_grapesjs.template import template_source
+from django_grapesjs.utils import apply_string_handling
 
 __all__ = (
     'GrapesJsWidget',
@@ -20,21 +21,21 @@ class GrapesJsWidget(forms.Textarea):
     class Media:
         css = {
             'all': (
-                STATIC_URL + 'css/django_grapesjs/grapes.min.css',
-                STATIC_URL + 'css/django_grapesjs/grapesjs-preset-newsletter.css',
-                STATIC_URL + 'css/django_grapesjs/grapesjs-preset-webpage.min.css',
-                STATIC_URL + 'css/django_grapesjs/grapesjs-plugin-filestack.css',
+                'css/django_grapesjs/grapes.min.css',
+                'css/django_grapesjs/grapesjs-preset-newsletter.css',
+                'css/django_grapesjs/grapesjs-preset-webpage.min.css',
+                'css/django_grapesjs/grapesjs-plugin-filestack.css',
             )
         }
         js = [
-            '//feather.aviary.com/imaging/v3/editor.js',
-            STATIC_URL + 'js/django_grapesjs/grapes.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-aviary.min.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-preset-newsletter.min.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-preset-webpage.min.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-lory-slider.min.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-tabs.min.js',
-            STATIC_URL + 'js/django_grapesjs/grapesjs-plugin-filestack.min.js',
+            'js/django_grapesjs/feather-aviary-editor.js',
+            'js/django_grapesjs/grapes.js',
+            'js/django_grapesjs/grapesjs-aviary.min.js',
+            'js/django_grapesjs/grapesjs-preset-newsletter.min.js',
+            'js/django_grapesjs/grapesjs-preset-webpage.min.js',
+            'js/django_grapesjs/grapesjs-lory-slider.min.js',
+            'js/django_grapesjs/grapesjs-tabs.min.js',
+            'js/django_grapesjs/grapesjs-plugin-filestack.min.js',
         ]
 
     def get_formated_value_id(self, value_id):
@@ -44,17 +45,21 @@ class GrapesJsWidget(forms.Textarea):
         context = super().get_context(name, value, attrs)
 
         context['widget']['attrs']['id'] = self.get_formated_value_id(context['widget']['attrs']['id'])
-        context['widget'].update({'get_render_html_value': self.get_render_html_value(self.default_html)})
-        context['widget'].update({'html_name_init_conf': self.html_name_init_conf})
+        context['widget'].update({
+            'get_render_html_value': self.get_render_html_value(),
+            'html_name_init_conf': self.html_name_init_conf
+        })
 
         return context
 
-    def get_render_html_value(self, default_html, apply_django_tag=False):
+    def get_render_html_value(self):
         def _get_render_html_value():
-            if not apply_django_tag:
-                return template_source.get_template(default_html).template
+            if not self.apply_django_tag:
+                return apply_string_handling(
+                    template_source.get_template(self.default_html).template
+                )
 
-            return render_to_string(default_html)
+            return apply_string_handling(render_to_string(self.default_html))
 
         return _get_render_html_value
 

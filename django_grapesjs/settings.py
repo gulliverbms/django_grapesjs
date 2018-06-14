@@ -29,6 +29,8 @@ STATIC_URL = getattr(settings, 'STATIC_URL', "/static/")
 # you can override the name of tags
 NAME_IGNORE_TAG = getattr(settings, 'NAME_IGNORE_TAG', 'ignore')
 NAME_HIDDEN_TAG = getattr(settings, 'NAME_HIDDEN_TAG', 'hidden')
+NAME_RENDER_TAG = getattr(settings, 'NAME_RENDER_TAG', 'render')
+NAME_MAKEUP_TAG = getattr(settings, 'NAME_MAKEUP_TAG', 'makeup')
 
 
 REPLACE_SAVE_IGNORE_TAGS = {
@@ -49,4 +51,9 @@ REPLACE_INIT_HIDDEN_TAGS = {
     '</%s>' % NAME_HIDDEN_TAG: '</%s></div>' % NAME_HIDDEN_TAG,
 }
 
+STRING_HANDLERS = [
+    'django_grapesjs.utils.tag_makeup.ApplyMakeupTag',
+    'django_grapesjs.utils.tag_render.ApplyRenderTag',
+    *getattr(settings, 'STRING_HANDLERS', [])
+]
 
