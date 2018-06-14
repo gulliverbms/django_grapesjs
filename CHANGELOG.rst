@@ -1,7 +1,13 @@
 Changelog
 =========
 
-0.0.4 (2018-10-06)
+0.0.6 (2018-10-06)
+---------------------------------
+- Added the string handlers.
+- Added the tags render and makeup.
+- Fixed bugs
+
+0.0.4-5 (2018-10-06)
 ---------------------------------
 - Added the static ignoring functionality in the "ignore" tag. Added "hidden" tag
 - Fixed bug when getting css and html

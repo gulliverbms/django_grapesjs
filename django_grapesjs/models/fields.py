@@ -14,19 +14,19 @@ class GrapesJsHtmlField(models.TextField):
     Model field with support grapesjs.
 
     """
-    def __init__(self, verbose_name=None, name=None, auto_now=False,
-                 auto_now_add=False, default_html=GRAPESJS_DEFAULT_HTML,
-                 redactor_config=BASE, **kwargs):
-        self.default_html = default_html
-        self.html_name_init_conf = REDACTOR_CONFIG[redactor_config]
+    def __init__(self, default_html=GRAPESJS_DEFAULT_HTML, redactor_config=BASE,
+                 apply_django_tag=False, validate=False, **kwargs):
+        self.params_for_formfield = {
+            'default_html': default_html,
+            'html_name_init_conf': REDACTOR_CONFIG[redactor_config],
+            'apply_django_tag': apply_django_tag,
+            'validate': validate,
+            'form_class': GrapesJsField,
+            'widget': GrapesJsWidget,
+        }
 
-        super().__init__(verbose_name, name, **kwargs)
+        super().__init__(**kwargs)
 
     def formfield(self, **kwargs):
-        kwargs['form_class'] = GrapesJsField
-        kwargs['widget'] = GrapesJsWidget
-        kwargs['default_html'] = self.default_html
-        kwargs['html_name_init_conf'] = self.html_name_init_conf
-
-        return super().formfield(**kwargs)
+        return super().formfield(**{**kwargs, **self.params_for_formfield})
 
