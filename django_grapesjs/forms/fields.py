@@ -17,18 +17,18 @@ class GrapesJsField(forms.CharField):
     widget = GrapesJsWidget
 
     def __init__(self, default_html=GRAPESJS_DEFAULT_HTML, html_name_init_conf=REDACTOR_CONFIG[BASE],
-                 apply_django_tag=False, validate=False, *args, **kwargs):
+                 apply_django_tag=False, validate_tags=False, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.widget.default_html = default_html
         self.widget.html_name_init_conf = html_name_init_conf
         self.widget.apply_django_tag = apply_django_tag
-        self.validate = validate
+        self.validate_tags = validate_tags
 
     def validate(self, value):
         super().validate(value)
         # TODO: check the field
-        # if self.validate:
+        # if self.validate_tags:
 
     def clean(self, value):
         value = apply_string_handling(value, 'apply_tag_save')

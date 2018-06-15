@@ -15,12 +15,12 @@ class GrapesJsHtmlField(models.TextField):
 
     """
     def __init__(self, default_html=GRAPESJS_DEFAULT_HTML, redactor_config=BASE,
-                 apply_django_tag=False, validate=False, **kwargs):
+                 apply_django_tag=False, validate_tags=False, **kwargs):
         self.params_for_formfield = {
             'default_html': default_html,
             'html_name_init_conf': REDACTOR_CONFIG[redactor_config],
             'apply_django_tag': apply_django_tag,
-            'validate': validate,
+            'validate_tags': validate_tags,
             'form_class': GrapesJsField,
             'widget': GrapesJsWidget,
         }
