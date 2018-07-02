@@ -52,8 +52,8 @@ REPLACE_INIT_HIDDEN_TAGS = {
 }
 
 STRING_HANDLERS = [
-    'django_grapesjs.utils.tag_makeup.ApplyMakeupTag',
-    'django_grapesjs.utils.tag_render.ApplyRenderTag',
+    'django_grapesjs.utils.tags.makeup.ApplyMakeupTag',
+    'django_grapesjs.utils.tags.render.ApplyRenderTag',
     *getattr(settings, 'STRING_HANDLERS', [])
 ]
 
