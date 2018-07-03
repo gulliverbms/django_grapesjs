@@ -14,25 +14,14 @@ __all__ = (
 
 
 class GetRenderHtmlValueTestCase(test.TestCase):
-    name_file = 'test.html'
-    path_file = './app/templates/%s'
-
-    def create_template(self, value):
-        f = open(self.path_file % self.name_file, 'w')
-        f.write(value)
-        f.close()
-
-    def delete_template(self):
-        os.remove(self.path_file % self.name_file)
+    template_name = 'django_grapesjs/tests/get_render_html_value.html'
 
     def test_get_render_html_value_correct(self):
         value = '{{ "TEST"|lower }}'
         result = 'test'
 
-        self.create_template(value)
-        self.assertEqual(value, get_render_html_value(self.name_file, apply_django_tag=False)())
-        self.assertEqual(result, get_render_html_value(self.name_file, apply_django_tag=True)())
-        self.delete_template()
+        self.assertEqual(value, get_render_html_value(self.template_name, apply_django_tag=False)())
+        self.assertEqual(result, get_render_html_value(self.template_name, apply_django_tag=True)())
 
     def test_get_render_html_value_incorrect(self):
         with self.assertRaises(TemplateDoesNotExist):

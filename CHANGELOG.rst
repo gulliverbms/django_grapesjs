@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.0.7 (2018-03-07)
+---------------------------------
+- Added multiple choice of templates.
+- Added unit tests.
+- Changed the template "change_form.html"
+
 0.0.6.1 (2018-14-06)
 ---------------------------------
 - Fixed validate parameter.

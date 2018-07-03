@@ -27,6 +27,7 @@ class GrapesJsFieldTestCase(test.TestCase):
         incorrect_value = 'string'
 
         formfield = GrapesJsField()
+
         self.assertSetEqual(
             set(GrapesJsField.__init__.__defaults__),
             set(self.get_check_dict_attr(None, {}, formfield).values())
@@ -34,6 +35,7 @@ class GrapesJsFieldTestCase(test.TestCase):
 
         data = self.get_check_dict_attr(incorrect_value, {}, None)
         formfield = GrapesJsField(**data)
+
         self.assertSetEqual(
             set(data.values()),
             set(self.get_check_dict_attr(None, {}, formfield).values())
