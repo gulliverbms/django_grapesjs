@@ -1,9 +1,6 @@
 from django import forms
-from django.template.loader import render_to_string
-
 from django_grapesjs.settings import GRAPESJS_TEMPLATE
-from django_grapesjs.template import template_source
-from django_grapesjs.utils import apply_string_handling
+from django_grapesjs.utils import get_render_html_value
 
 __all__ = (
     'GrapesJsWidget',
@@ -38,28 +35,21 @@ class GrapesJsWidget(forms.Textarea):
             'js/django_grapesjs/grapesjs-plugin-filestack.min.js',
         ]
 
-    def get_formated_value_id(self, value_id):
+    def get_formatted_id_value(self, value_id):
         return value_id.replace('-', '_')
 
     def get_context(self, name, value, attrs):
         context = super().get_context(name, value, attrs)
 
-        context['widget']['attrs']['id'] = self.get_formated_value_id(context['widget']['attrs']['id'])
+        context['widget']['attrs']['id'] = self.get_formatted_id_value(context['widget']['attrs']['id'])
         context['widget'].update({
-            'get_render_html_value': self.get_render_html_value(),
-            'html_name_init_conf': self.html_name_init_conf
+            'get_render_html_value': get_render_html_value(
+                self.default_html, apply_django_tag=self.apply_django_tag
+            ),
+            'html_name_init_conf': self.html_name_init_conf,
+            'template_choices': self.template_choices,
+            'apply_django_tag': int(self.apply_django_tag),
         })
 
         return context
-
-    def get_render_html_value(self):
-        def _get_render_html_value():
-            if not self.apply_django_tag:
-                return apply_string_handling(
-                    template_source.get_template(self.default_html).template
-                )
-
-            return apply_string_handling(render_to_string(self.default_html))
-
-        return _get_render_html_value
 

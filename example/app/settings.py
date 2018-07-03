@@ -35,7 +35,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'app',
-
     'django_grapesjs',
 
     'django.contrib.admin',

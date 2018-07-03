@@ -1,7 +1,15 @@
 {% load grapesjs_tags %}
 
+{% if not widget.value and widget.template_choices %}
+<select id="select-{{ widget.attrs.id }}" onchange="getSource(this, '{{ widget.apply_django_tag }}', '{{ widget.attrs.id }}')">
+   {% for data_tuple in widget.template_choices %}
+   <option value="{{ data_tuple.0 }}">{{ data_tuple.1 }}</option>
+   {% endfor %}
+</select>
+{% endif %}
+
 <textarea hidden name="{{ widget.name }}" {% include "django/forms/widgets/attrs.html" %}>
-{% if widget.value %}{{ widget.value }}{% else %}{{ widget.get_render_html_value }}{% endif %}</textarea>
+{% if widget.value %}{{ widget.value }}{% else %}<div>{{ widget.get_render_html_value }}</div>{% endif %}</textarea>
 <div hidden name='get-all-id'>{{ widget.attrs.id }}</div>
 <div id="gjs-{{ widget.attrs.id }}"></div>
 
@@ -16,12 +24,9 @@
             editor_{{ widget.attrs.id }}.setComponents(
                 replaceTag(
                     normalizeData(document.getElementById("{{ widget.attrs.id }}").value, false),
-                    [
-                        {% get_settings_value "REPLACE_INIT_IGNORE_TAGS" safe=True %},
-                        {% get_settings_value "REPLACE_INIT_HIDDEN_TAGS" safe=True %},
-                    ]
+                    replaceTagsInit
                 )
-            );
+            )
         } catch (e) {
             editor_{{ widget.attrs.id }}.setComponents(
                 "Error in the template: <br>name: " + e.name + "<br>message: " + e.message + "<br>"

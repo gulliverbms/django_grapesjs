@@ -35,6 +35,15 @@ Then add it to your INSTALLED_APPS:
         'django.contrib.admin',
     )
 
+To work with the "template_choices", need to add a url-template in the urls.py file
+
+.. code-block:: python
+
+    urlpatterns = [
+       path('get_template/', GetTemplate.as_view(), name='dgjs_get_template'),
+    ]
+
+
 Using
 ===============
 Just import the field and add to your model
@@ -66,6 +75,22 @@ Just import the field and add to your model
 
         # use apply_django_tag = True, if you want to apply render django or jinja tags
         html = GrapesJsHtmlField(default_html='default.html', apply_django_tag=True)
+        ...
+
+        # use template_choices to select multiple templates
+        html = GrapesJsHtmlField(template_choices=(('django_grapesjs/default.html', 'default'),))
+
+And then inherit "GrapesJsAdminMixin", in the admin class of the current model
+
+.. code-block:: python
+
+    from django.contrib import admin
+    from django_grapesjs.admin import GrapesJsAdminMixin
+
+
+    @admin.register(ExampleModel)
+    class ExampleAdmin(GrapesJsAdminMixin, admin.ModelAdmin):
+        pass
 
 You can use special tags in your templates, for flexible customization
 
@@ -104,6 +129,7 @@ Custom Settings
 
     # Add or redefine the configuration of the editor
     REDACTOR_CONFIG = {'base': 'django_grapesjs/redactor_config/base.html'}  # default value
+
 
 Warning
 ===============

@@ -1,0 +1,17 @@
+language: python
+python:
+  - "3.6"
+  - "3.5"
+env:
+  - DJANGO_VERSION=2.0
+  - DJANGO_VERSION=1.11
+
+install:
+  - pip install -q Django==$DJANGO_VERSION
+  - pip install coverage
+  - pip install coveralls
+script:
+  - cd example && coverage run --source=django_grapesjs --omit=*/migrations/*,*/tests/* manage.py test django_grapesjs
+after_success:
+  - cd example && coverage report
+  - cd example && coveralls
