@@ -5,6 +5,12 @@ django_grapesjs
    :target: https://codeclimate.com/github/gulliverbms/django_grapesjs/maintainability
    :alt: Maintainability
 
+.. image:: https://travis-ci.org/gulliverbms/django_grapesjs.svg?branch=master
+   :target: https://travis-ci.org/gulliverbms/django_grapesjs
+
+.. image:: https://coveralls.io/repos/github/gulliverbms/django_grapesjs/badge.svg?branch=master
+   :target: https://coveralls.io/github/gulliverbms/django_grapesjs?branch=master
+
 .. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
    :target: https://github.com/gulliverbms/django_grapesjs/issues
    :alt: contributions welcome
