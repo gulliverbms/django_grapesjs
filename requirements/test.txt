@@ -1,0 +1,15 @@
+-r base.txt
+filelock==3.0.12
+importlib-metadata==0.23
+more-itertools==7.2.0
+packaging==19.2
+pluggy==0.13.0
+py==1.8.0
+pyparsing==2.4.2
+pytz==2019.2
+six==1.12.0
+sqlparse==0.3.0
+toml==0.10.0
+tox==3.14.0
+virtualenv==16.7.5
+zipp==0.6.0
