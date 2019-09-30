@@ -2,7 +2,8 @@ Changelog
 =========
 0.0.8 (2019-09-30)
 ---------------------------------
-- Add .idea folder to .gitignore file
+- Add .idea folder to .gitignore file.
+- Split requirements.txt to base/test/prod files.
 
 0.0.7 (2018-03-07)
 ---------------------------------
