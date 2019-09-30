@@ -1,0 +1,2 @@
+django>=1.11
+django-npm>=1.0.0

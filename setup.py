@@ -30,5 +30,5 @@ setup(
         "Environment :: Web Environment",
     ],
     license='MIT',
-    install_requires=read('requirements.txt'),
+    install_requires=read('requirements/prod.txt'),
 )
