@@ -5,6 +5,7 @@ Changelog
 - Add .idea folder to .gitignore file.
 - Split requirements.txt to base/test/prod files.
 - Add django_npm
+- Update grapesjs via npm
 
 0.0.7 (2018-03-07)
 ---------------------------------
