@@ -1,0 +1,61 @@
+{% extends 'django_grapesjs/views/base.html' %}
+
+{% load grapesjs_tags %}
+
+{% get_settings_value "GRAPESJS_PLUGIN_ASSETS" as GRAPESJS_PLUGINS %}
+
+{% block grapesjs %}
+    <script>
+        const editor = grapesjs.init({
+            // Indicate where to init the editor. You can also pass an HTMLElement
+            container: "#{{ GRAPESJS_CONTAINER_ID }}",
+            storageManager: {
+                id: '{{ GRAPESJS_STORAGE_ID_PREFIX }}',
+                type: '{{ GRAPESJS_STORAGE_TYPE }}',
+                // Choosing which storage to check for a template existence
+                checkLocal: {{ GRAPESJS_CHECK_LOCAL }},
+                // If autosave enabled, indicates how many changes are necessary
+                // before store method is fired
+                stepsBeforeSave: {{ GRAPESJS_STEPS_BEFORE_SAVE }},
+                // Store data automatically
+                autosave: {{ GRAPESJS_URL_STORE|exists}},
+                // Autoload stored data on init
+                autoload: {{ GRAPESJS_URL_LOAD|exists}},
+                // Url for storing a template
+                urlStore: '{{ GRAPESJS_URL_STORE }}',
+                // Url for loading a template
+                urlLoad: '{{ GRAPESJS_URL_LOAD }}',
+                headers: {
+                    'Access-Control-Allow-Origin': [
+                        {% for origin in GRAPESJS_ALLOWED_ORIGIN_LIST %} '{{ origin }}', {% endfor %}],
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+            },
+            plugins: [{% for plugin_name in GRAPESJS_PLUGINS.keys %}'{{ plugin_name }}', {% empty %}{% endfor %}]
+        });
+        editor.Panels.addButton('options',
+            [{
+                id: 'save-db',
+                className: 'fa fa-floppy-o',
+                command: 'save-db',
+                attributes: {title: 'Save'}
+            }]
+        );
+
+        // Add the command
+        editor.Commands.add('save-db', {
+            run: function (editor, sender) {
+                sender && sender.set('active'); // turn off the button
+                editor.store();
+            }
+        });
+        editor.on('storage:response', function (e) {
+            console.log('On response', this, e);
+            let modelId = e.id.toString();
+            let smConfig = this.config.storageManager;
+        });
+        editor.on('storage:store', function (e) {
+            console.log('Stored ', e);
+        });
+    </script>
+{% endblock %}

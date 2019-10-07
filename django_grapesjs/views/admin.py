@@ -1,8 +1,7 @@
 from django.http import HttpResponse
 from django.views.generic import TemplateView
-from django_grapesjs.utils import get_render_html_value
 
-__all__ = ('GetTemplate', )
+from django_grapesjs.utils import get_render_html_value
 
 
 class GetTemplate(TemplateView):
@@ -11,4 +10,3 @@ class GetTemplate(TemplateView):
         apply_django_tag = int(request.GET['apply_django_tag'])
 
         return HttpResponse(get_render_html_value(template_name, apply_django_tag=apply_django_tag)())
-

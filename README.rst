@@ -41,6 +41,39 @@ Then add it to your INSTALLED_APPS:
         'django.contrib.admin',
     )
 
+For client-side:
+================
+
+Set a path to the GrapesJS model .. code-block:: python
+
+    GRAPESJS_MODEL = 'app.GrapesJSModel'
+
+You can make a model which inherits a base model for GrapesJS template .. code-block:: python
+
+    class GrapesJSModel(BaseGrapesJSModel):
+        user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+
+Set a path to the model form which passes GrapesJS template to the model .. code-block:: python
+
+    GRAPESJS_FORM = 'app.forms.GrapesJSForm'
+
+Attach view mixin for processing GrapesJS template data .. code-block:: python
+
+    class GrapesJSView(GrapesJSTemplateProcessingMixin, views.View):
+        pass
+
+
+Add routes to the main view and several processing ones .. code-block:: python
+
+    urlpatterns = [
+        re_path('^template/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.as_view(), name='template'),
+        re_path('^template/save/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.saveTemplate, name='template-save'),
+        re_path('^template/load/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.loadTemplate, name='template-load'),
+    ]
+
+For admin usage:
+================
+
 To work with the "template_choices", need to add a url-template in the urls.py file
 
 .. code-block:: python
@@ -50,8 +83,6 @@ To work with the "template_choices", need to add a url-template in the urls.py f
     ]
 
 
-Using
-===============
 Just import the field and add to your model
 
 .. code-block:: python
@@ -92,9 +123,9 @@ And then inherit "GrapesJsAdminMixin", in the admin class of the current model
 
     from django.contrib import admin
     from django_grapesjs.admin import GrapesJsAdminMixin
+    from app.models import GrapesJSModel
 
-
-    @admin.register(ExampleModel)
+    @admin.register(GrapesJSModel)
     class ExampleAdmin(GrapesJsAdminMixin, admin.ModelAdmin):
         pass
 
