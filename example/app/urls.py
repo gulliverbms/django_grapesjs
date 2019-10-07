@@ -14,15 +14,28 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django_grapesjs.views import GetTemplate
+
+from django_grapesjs.views.admin import GetTemplate
+
+from app.views import (
+    GrapesJSTemplateView, GrapesJSFormView
+)
 
 
 try:
-    from django.urls import path
+    from django.urls import re_path
 
     urlpatterns = [
-        path('admin/', admin.site.urls),
-        path('get_template/', GetTemplate.as_view(), name='dgjs_get_template'),
+        re_path('^admin/', admin.site.urls),
+        # Basic usage
+        re_path('^base/$', GrapesJSTemplateView.as_view(), name='base'),
+        # With network capabilities
+        re_path('^template/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.as_view(), name='template'),
+        re_path('^template/save/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.saveTemplate, name='template-save'),
+        re_path('^template/load/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.loadTemplate, name='template-load'),
+        # Admin
+        re_path('^get_template/$', GetTemplate.as_view(), name='dgjs_get_template'),
+
     ]
 
 except ImportError:
@@ -30,5 +43,9 @@ except ImportError:
 
     urlpatterns = [
         url(r'^admin/', include(admin.site.urls)),
-        url(r'^get_template/', GetTemplate.as_view(), name='dgjs_get_template'),
+        url('^template/$', GrapesJSFormView.as_view(), name='template'),
+        url('^template/(?P<pk>[0-9]{1,}/)?$', GrapesJSFormView.as_view(), name='template'),
+        url('^template/load/(?P<pk>[0-9]{1,}/)?$', GrapesJSFormView.loadTemplate, name='template-load'),
+        url('^template/save/(?P<pk>[0-9]{1,}/)?$', GrapesJSFormView.saveTemplate, name='template-save'),
+        url('^get_template/$', GetTemplate.as_view(), name='dgjs_get_template'),
     ]
