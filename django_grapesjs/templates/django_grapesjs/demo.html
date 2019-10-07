@@ -1,0 +1,1115 @@
+<html>
+<head></head>
+<body class="gjs-dashed">
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body, #wrapper {
+        min-height: 100%;
+    }
+
+    body {
+        margin: 0;
+        height: 100%;
+        background-color: #fff
+    }
+
+    #wrapper {
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    * ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1)
+    }
+
+    * ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2)
+    }
+
+    * ::-webkit-scrollbar {
+        width: 10px
+    }
+
+
+    .gjs-dashed *[data-highlightable] {
+        outline: 1px dashed rgba(170, 170, 170, 0.7);
+        outline-offset: -2px;
+    }
+
+    .gjs-comp-selected {
+        outline: 3px solid #3b97e3 !important;
+        outline-offset: -3px;
+    }
+
+    .gjs-comp-selected-parent {
+        outline: 2px solid #ffca6f !important
+    }
+
+    .gjs-no-select {
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+    }
+
+    .gjs-freezed {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    .gjs-no-pointer {
+        pointer-events: none;
+    }
+
+    .gjs-plh-image {
+        background: #f5f5f5;
+        border: none;
+        height: 100px;
+        width: 100px;
+        display: block;
+        outline: 3px solid #ffca6f;
+        cursor: pointer;
+        outline-offset: -2px
+    }
+
+    .gjs-grabbing {
+        cursor: grabbing;
+        cursor: -webkit-grabbing;
+    }
+
+    .gjs-is__grabbing {
+        overflow-x: hidden;
+    }
+
+    .gjs-is__grabbing,
+    .gjs-is__grabbing * {
+        cursor: grabbing !important;
+    }
+
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+    }
+</style>
+<div data-gjs-type="wrapper" draggable="true" data-highlightable="1" id="wrapper">
+    <header data-gjs-type="default" draggable="true" data-highlightable="1" class="header-banner gjs-hovered"
+            id="ik7dus">
+        <div data-gjs-type="default" draggable="true" data-highlightable="1" class="container-width" id="ijpd1a">
+            <div data-gjs-type="default" draggable="true" data-highlightable="1" class="logo-container" id="ibolut">
+                <div data-gjs-type="text" draggable="true" data-highlightable="1" class="logo" id="i5nyti">GrapesJS
+                </div>
+            </div>
+            <nav data-gjs-type="default" draggable="true" data-highlightable="1" class="menu" id="i7hivq">
+                <div data-gjs-type="text" draggable="true" data-highlightable="1" class="menu-item" id="is7hrn">
+                    BUILDER
+                </div>
+                <div data-gjs-type="text" draggable="true" data-highlightable="1" class="menu-item" id="iwyw9y">
+                    TEMPLATE
+                </div>
+                <div data-gjs-type="text" draggable="true" data-highlightable="1" class="menu-item" id="iveewi">WEB
+                </div>
+            </nav>
+            <div data-gjs-type="default" draggable="true" data-highlightable="1" class="clearfix" id="ifov1v"></div>
+            <div data-gjs-type="text" draggable="true" data-highlightable="1" class="lead-title" id="io1xpz">Build your
+                templates without coding
+            </div>
+            <div data-gjs-type="text" draggable="true" data-highlightable="1" class="sub-lead-title" id="izpfpn">All
+                text blocks could be edited easily with double clicking on it. You can create new text blocks with the
+                command from the left panel
+            </div>
+            <div data-gjs-type="text" draggable="true" data-highlightable="1" class="lead-btn" id="ituyog">Hover me
+            </div>
+        </div>
+    </header>
+    <section data-gjs-type="default" draggable="true" data-highlightable="1" class="flex-sect" id="iqnax8">
+        <div data-gjs-type="default" draggable="true" data-highlightable="1" class="container-width" id="ii536u">
+            <div data-gjs-type="text" draggable="true" data-highlightable="1" class="flex-title" id="i6b96k">Flex is the
+                new black
+            </div>
+            <div data-gjs-type="text" draggable="true" data-highlightable="1" class="flex-desc" id="iu4n08">With flexbox
+                system you're able to build complex layouts easily and with free responsivity
+            </div>
+            <div data-gjs-type="default" draggable="true" data-highlightable="1" class="cards" id="igcqqf">
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card" id="ie5m13">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-header"
+                         id="i9c5ef"></div>
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-body" id="iegm7s">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-title"
+                             id="i8reyx">Title one
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-sub-title"
+                             id="ilfhc7">Subtitle one
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-desc" id="ihj5qb">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore
+                        </div>
+                    </div>
+                </div>
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card" id="iorc4h">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-header ch2"
+                         id="i8h426"></div>
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-body" id="iz8plw">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-title"
+                             id="ipg91e">Title two
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-sub-title"
+                             id="iqxht4">Subtitle two
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-desc" id="ii9juf">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore
+                        </div>
+                    </div>
+                </div>
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card" id="i4bslj">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-header ch3"
+                         id="itixwf"></div>
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-body" id="itctiz">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-title"
+                             id="i0rxc8">Title three
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-sub-title"
+                             id="igai8l">Subtitle three
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-desc" id="i49gak">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore
+                        </div>
+                    </div>
+                </div>
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card" id="ihfphv">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-header ch4"
+                         id="in9s9n"></div>
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-body" id="ixe0z7">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-title"
+                             id="ipcgyg">Title four
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-sub-title"
+                             id="ijxacg">Subtitle four
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-desc" id="i8q37l">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore
+                        </div>
+                    </div>
+                </div>
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card" id="i6nzba">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-header ch5"
+                         id="ic89jg"></div>
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-body" id="izao59">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-title"
+                             id="io0j5w">Title five
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-sub-title"
+                             id="isznjl">Subtitle five
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-desc" id="ipftjx">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore
+                        </div>
+                    </div>
+                </div>
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card" id="isymk7">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-header ch6"
+                         id="ir85j8"></div>
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="card-body" id="i080r6">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-title"
+                             id="isymqr">Title six
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-sub-title"
+                             id="i7mccj">Subtitle six
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="card-desc" id="igewgx">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section data-gjs-type="default" draggable="true" data-highlightable="1" class="am-sect" id="iyjpzt">
+        <div data-gjs-type="default" draggable="true" data-highlightable="1" class="container-width" id="izmkwg">
+            <div data-gjs-type="default" draggable="true" data-highlightable="1" class="am-container" id="iy96v8"><img
+                    data-gjs-type="image" draggable="true" onmousedown="return false" src="./img/phone-app.png"
+                    class="img-phone" id="iavm98">
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="am-content" id="ipxjk8">
+                    <div data-gjs-type="text" draggable="true" data-highlightable="1" class="am-pre" id="iyg079">ASSET
+                        MANAGER
+                    </div>
+                    <div data-gjs-type="text" draggable="true" data-highlightable="1" class="am-title" id="improh">
+                        Manage your images with Asset Manager
+                    </div>
+                    <div data-gjs-type="text" draggable="true" data-highlightable="1" class="am-desc" id="i8ew2b">You
+                        can create image blocks with the command from the left panel and edit them with double click
+                    </div>
+                    <div data-gjs-type="text" draggable="true" data-highlightable="1" class="am-post" id="ixp3tg">Image
+                        uploading is not allowed in this demo
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section data-gjs-type="default" draggable="true" data-highlightable="1" class="blk-sect" id="iz6j2i">
+        <div data-gjs-type="default" draggable="true" data-highlightable="1" class="container-width" id="ik7mh2">
+            <div data-gjs-type="text" draggable="true" data-highlightable="1" class="blk-title" id="in9747">Blocks</div>
+            <div data-gjs-type="text" draggable="true" data-highlightable="1" class="blk-desc" id="i71qmg">Each element
+                in HTML page could be seen as a block. On the left panel you could find different kind of blocks that
+                you can create, move and style
+            </div>
+            <div data-gjs-type="default" draggable="true" data-highlightable="1" class="price-cards" id="iys1d4">
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="price-card-cont"
+                     id="ib2n09">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="price-card" id="i57nrj">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-title" id="i8vaag">
+                            Starter
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-desc" id="in2nap">
+                            Some random list
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature odd-feat"
+                             id="itb5t2">+ Starter feature 1
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature"
+                             id="i9audv">+ Starter feature 2
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature odd-feat"
+                             id="iimfcx">+ Starter feature 3
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature"
+                             id="i5d9n9">+ Starter feature 4
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-amount odd-feat"
+                             id="ipaomf">$ 9,90/mo
+                        </div>
+                    </div>
+                </div>
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="price-card-cont"
+                     id="i7c7dm">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="price-card pc-regular"
+                         id="iwbsrg">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-title" id="iy9s6i">
+                            Regular
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-desc" id="iosswl">
+                            Some random list
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature odd-feat"
+                             id="izlw4i">+ Regular feature 1
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature"
+                             id="ik16ew">+ Regular feature 2
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature odd-feat"
+                             id="ik2px4">+ Regular feature 3
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature"
+                             id="i1q8gu">+ Regular feature 4
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-amount odd-feat"
+                             id="ihx5y9">$ 19,90/mo
+                        </div>
+                    </div>
+                </div>
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="price-card-cont"
+                     id="i6n27r">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1"
+                         class="price-card pc-enterprise" id="i6ty6c">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-title" id="i8du8l">
+                            Enterprise
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-desc" id="ict9hr">
+                            Some random list
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature odd-feat"
+                             id="iflehx">+ Enterprise feature 1
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature"
+                             id="i7brc7">+ Enterprise feature 2
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature odd-feat"
+                             id="i9yc47">+ Enterprise feature 3
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-feature"
+                             id="i3edik">+ Enterprise feature 4
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="pc-amount odd-feat"
+                             id="ik7i4h">$ 29,90/mo
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section data-gjs-type="default" draggable="true" data-highlightable="1" class="bdg-sect" id="ikpi8l">
+        <div data-gjs-type="default" draggable="true" data-highlightable="1" class="container-width" id="i36it6"><h1
+                data-gjs-type="text" draggable="true" data-highlightable="1" class="bdg-title" id="iiohku">The team</h1>
+            <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badges" id="il3gdi">
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge" id="ikhksv">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge-header"
+                         id="i8jjeq"></div>
+                    <img data-gjs-type="image" draggable="true" src="img/team1.jpg" class="badge-avatar" id="ifoywf">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge-body" id="imkgyk">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-name"
+                             id="ilf9zx">Adam Smith
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-role"
+                             id="i7kr3y">CEO
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-desc"
+                             id="ifwiff">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore ipsum dolor sit
+                        </div>
+                    </div>
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge-foot" id="ii9wyt">
+                        <span data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-link"
+                              id="iojmm5">f</span><span data-gjs-type="text" draggable="true" data-highlightable="1"
+                                                        class="badge-link" id="i93vbm">t</span><span
+                            data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-link" id="i2ujii">ln</span>
+                    </div>
+                </div>
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge" id="i3rhdj">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge-header"
+                         id="ippyjh"></div>
+                    <img data-gjs-type="image" draggable="true" src="img/team2.jpg" class="badge-avatar" id="ic9dg5">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge-body" id="icfod1">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-name"
+                             id="i4uc9n">John Black
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-role"
+                             id="ioou1o">Software Engineer
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-desc"
+                             id="ipcfzx">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore ipsum dolor sit
+                        </div>
+                    </div>
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge-foot" id="izr8ww">
+                        <span data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-link"
+                              id="idorwq">f</span><span data-gjs-type="text" draggable="true" data-highlightable="1"
+                                                        class="badge-link" id="i4udgv">t</span><span
+                            data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-link" id="i4m3e6">ln</span>
+                    </div>
+                </div>
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge" id="ifxsvg">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge-header"
+                         id="ixtk71"></div>
+                    <img data-gjs-type="image" draggable="true" src="img/team3.jpg" class="badge-avatar" id="ielqac">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge-body" id="iktpcg">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-name"
+                             id="isnqom">Jessica White
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-role"
+                             id="ipcxl5">Web Designer
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-desc"
+                             id="iail4l">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore ipsum dolor sit
+                        </div>
+                    </div>
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="badge-foot" id="i4dtwj">
+                        <span data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-link"
+                              id="ig6aki">f</span><span data-gjs-type="text" draggable="true" data-highlightable="1"
+                                                        class="badge-link" id="ih3khu">t</span><span
+                            data-gjs-type="text" draggable="true" data-highlightable="1" class="badge-link" id="is2t4x">ln</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer data-gjs-type="default" draggable="true" data-highlightable="1" class="footer-under" id="ifof61">
+        <div data-gjs-type="default" draggable="true" data-highlightable="1" class="container-width" id="in9z62">
+            <div data-gjs-type="default" draggable="true" data-highlightable="1" class="footer-container" id="iys2xn">
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="foot-lists" id="i27nu7">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="foot-list" id="i3yzne">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-title"
+                             id="iyhwvh">About us
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-item"
+                             id="il0h5b">Contact
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-item"
+                             id="i6o06b">Events
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-item"
+                             id="iex9wy">Company
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-item"
+                             id="ixd9mn">Jobs
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-item"
+                             id="ih5lrf">Blog
+                        </div>
+                    </div>
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="foot-list" id="i70qru">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-title"
+                             id="ivj8vl">Services
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-item"
+                             id="iso255">Education
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-item"
+                             id="i45shc">Partner
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-item"
+                             id="i9z5vb">Community
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-item"
+                             id="igj37g">Forum
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-item"
+                             id="ipb87l">Download
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-list-item"
+                             id="ig98qj">Upgrade
+                        </div>
+                    </div>
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="clearfix"
+                         id="i2kk4i"></div>
+                </div>
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="form-sub" id="inma64">
+                    <div data-gjs-type="default" draggable="true" data-highlightable="1" class="foot-form-cont"
+                         id="i6e7z7">
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-form-title"
+                             id="isc3kc">Subscribe
+                        </div>
+                        <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-form-desc"
+                             id="ix1qfg">Subscribe to our newsletter to receive exclusive offers and the latest news
+                        </div>
+                        <input data-gjs-type="input" draggable="true" data-highlightable="1" name="name"
+                               placeholder="Name" class="sub-input" id="i5oa83"><input data-gjs-type="input"
+                                                                                       draggable="true"
+                                                                                       data-highlightable="1"
+                                                                                       name="email" placeholder="Email"
+                                                                                       class="sub-input" id="iex50q">
+                        <button data-gjs-type="button" draggable="true" data-highlightable="1" type="button"
+                                class="sub-btn" id="iigug2">Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-gjs-type="default" draggable="true" data-highlightable="1" class="copyright" id="i41fmk">
+            <div data-gjs-type="default" draggable="true" data-highlightable="1" class="container-width" id="ipl0qv">
+                <div data-gjs-type="text" draggable="true" data-highlightable="1" class="made-with" id="ip918h">
+                    made with GrapesJS
+                </div>
+                <div data-gjs-type="text" draggable="true" data-highlightable="1" class="foot-social-btns" id="ingx5t">
+                    facebook twitter linkedin mail
+                </div>
+                <div data-gjs-type="default" draggable="true" data-highlightable="1" class="clearfix" id="i870ar"></div>
+            </div>
+        </div>
+    </footer>
+</div>
+<div class="gjs-css-rules">
+    <div id="gjs-css-rules">
+        <style>.clearfix {
+            clear: both;
+        }</style>
+        <style>.header-banner {
+            padding-top: 35px;
+            padding-bottom: 100px;
+            color: #ffffff;
+            font-family: Helvetica, serif;
+            font-weight: 100;
+            background-image: url("//grapesjs.com/img/bg-gr-v.png"), url("//grapesjs.com/img/work-desk.jpg");
+            background-attachment: scroll, scroll;
+            background-position: left top, center center;
+            background-repeat: repeat-y, no-repeat;
+            background-size: contain, cover;
+        }</style>
+        <style>.container-width {
+            width: 90%;
+            max-width: 1150px;
+            margin: 0 auto;
+        }</style>
+        <style>.logo-container {
+            float: left;
+            width: 50%;
+        }</style>
+        <style>.logo {
+            background-color: #fff;
+            border-radius: 5px;
+            width: 130px;
+            padding: 10px;
+            min-height: 30px;
+            text-align: center;
+            line-height: 30px;
+            color: #4d114f;
+            font-size: 23px;
+        }</style>
+        <style>.menu {
+            float: right;
+            width: 50%;
+        }</style>
+        <style>.menu-item {
+            float: right;
+            font-size: 15px;
+            color: #eee;
+            width: 130px;
+            padding: 10px;
+            min-height: 50px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 400;
+        }</style>
+        <style>.lead-title {
+            margin: 150px 0 30px 0;
+            font-size: 40px;
+        }</style>
+        <style>.sub-lead-title {
+            max-width: 650px;
+            line-height: 30px;
+            margin-bottom: 30px;
+            color: #c6c6c6;
+        }</style>
+        <style>.lead-btn {
+            margin-top: 15px;
+            padding: 10px;
+            width: 190px;
+            min-height: 30px;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 3px;
+            line-height: 30px;
+            background-color: #d983a6;
+            border-radius: 5px;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }</style>
+        <style>.lead-btn:hover {
+            background-color: #ffffff;
+            color: #4c114e;
+        }</style>
+        <style>.lead-btn:active {
+            background-color: #4d114f;
+            color: #fff;
+        }</style>
+        <style>.flex-sect {
+            background-color: #fafafa;
+            padding: 100px 0;
+            font-family: Helvetica, serif;
+        }</style>
+        <style>.flex-title {
+            margin-bottom: 15px;
+            font-size: 2em;
+            text-align: center;
+            font-weight: 700;
+            color: #555;
+            padding: 5px;
+        }</style>
+        <style>.flex-desc {
+            margin-bottom: 55px;
+            font-size: 1em;
+            color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 5px;
+        }</style>
+        <style>.cards {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            flex-flow: wrap;
+        }</style>
+        <style>.card {
+            background-color: white;
+            height: 300px;
+            width: 300px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+            transition: all 0.5s ease;
+            font-weight: 100;
+            overflow: hidden;
+        }</style>
+        <style>.card:hover {
+            margin-top: -5px;
+            box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.2);
+        }</style>
+        <style>.card-header {
+            height: 155px;
+            background-image: url("//placehold.it/350x250/78c5d6/fff/image1.jpg");
+            background-size: cover;
+            background-position: center center;
+        }</style>
+        <style>.card-header.ch2 {
+            background-image: url("//placehold.it/350x250/459ba8/fff/image2.jpg");
+        }</style>
+        <style>.card-header.ch3 {
+            background-image: url("//placehold.it/350x250/79c267/fff/image3.jpg");
+        }</style>
+        <style>.card-header.ch4 {
+            background-image: url("//placehold.it/350x250/c5d647/fff/image4.jpg");
+        }</style>
+        <style>.card-header.ch5 {
+            background-image: url("//placehold.it/350x250/f28c33/fff/image5.jpg");
+        }</style>
+        <style>.card-header.ch6 {
+            background-image: url("//placehold.it/350x250/e868a2/fff/image6.jpg");
+        }</style>
+        <style>.card-body {
+            padding: 15px 15px 5px 15px;
+            color: #555;
+        }</style>
+        <style>.card-title {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }</style>
+        <style>.card-sub-title {
+            color: #b3b3b3;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }</style>
+        <style>.card-desc {
+            font-size: 0.85rem;
+            line-height: 17px;
+        }</style>
+        <style>.am-sect {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            font-family: Helvetica, serif;
+        }</style>
+        <style>.img-phone {
+            float: left;
+        }</style>
+        <style>.am-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+        }</style>
+        <style>.am-content {
+            float: left;
+            padding: 7px;
+            width: 490px;
+            color: #444;
+            font-weight: 100;
+            margin-top: 50px;
+            undefined: undefined;
+        }</style>
+        <style>.am-pre {
+            padding: 7px;
+            color: #b1b1b1;
+            font-size: 15px;
+        }</style>
+        <style>.am-title {
+            padding: 7px;
+            font-size: 25px;
+            font-weight: 400;
+        }</style>
+        <style>.am-desc {
+            padding: 7px;
+            font-size: 17px;
+            line-height: 25px;
+        }</style>
+        <style>.am-post {
+            padding: 7px;
+            line-height: 25px;
+            font-size: 13px;
+        }</style>
+        <style>.blk-sect {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            background-color: #222222;
+            font-family: Helvetica, serif;
+        }</style>
+        <style>.blk-title {
+            color: #fff;
+            font-size: 25px;
+            text-align: center;
+            margin-bottom: 15px;
+        }</style>
+        <style>.blk-desc {
+            color: #b1b1b1;
+            font-size: 15px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 100;
+        }</style>
+        <style>.price-cards {
+            margin-top: 70px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+        }</style>
+        <style>.price-card-cont {
+            width: 300px;
+            padding: 7px;
+            float: left;
+        }</style>
+        <style>.price-card {
+            margin: 0 auto;
+            min-height: 350px;
+            background-color: #d983a6;
+            border-radius: 5px;
+            font-weight: 100;
+            color: #fff;
+            width: 90%;
+        }</style>
+        <style>.pc-title {
+            font-weight: 100;
+            letter-spacing: 3px;
+            text-align: center;
+            font-size: 25px;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }</style>
+        <style>.pc-desc {
+            padding: 75px 0;
+            text-align: center;
+        }</style>
+        <style>.pc-feature {
+            color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+            font-size: 15px;
+            padding: 10px 20px;
+        }</style>
+        <style>.pc-feature:nth-of-type(2n) {
+            background-color: transparent;
+        }</style>
+        <style>.pc-amount {
+            background-color: rgba(0, 0, 0, 0.1);
+            font-size: 35px;
+            text-align: center;
+            padding: 35px 0;
+        }</style>
+        <style>.pc-regular {
+            background-color: #da78a0;
+        }</style>
+        <style>.pc-enterprise {
+            background-color: #d66a96;
+        }</style>
+        <style>.footer-under {
+            background-color: #312833;
+            padding-bottom: 100px;
+            padding-top: 100px;
+            min-height: 500px;
+            color: #eee;
+            position: relative;
+            font-weight: 100;
+            font-family: Helvetica, serif;
+        }</style>
+        <style>.led {
+            border-radius: 100%;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(0, 0, 0, 0.15);
+            float: left;
+            margin: 2px;
+            transition: all 5s ease;
+        }</style>
+        <style>.led:hover {
+            background-color: #c29fca;
+            undefined: undefined;
+            box-shadow: 0 0 5px #9d7aa5, 0 0 10px #e6c3ee;
+            transition: all 0s ease;
+        }</style>
+        <style>.copyright {
+            background-color: rgba(0, 0, 0, 0.15);
+            color: rgba(238, 238, 238, 0.5);
+            bottom: 0;
+            padding: 1em 0;
+            position: absolute;
+            width: 100%;
+            font-size: 0.75em;
+        }</style>
+        <style>.made-with {
+            float: left;
+            width: 50%;
+            padding: 5px 0;
+        }</style>
+        <style>.foot-social-btns {
+            display: none;
+            float: right;
+            width: 50%;
+            text-align: right;
+            padding: 5px 0;
+        }</style>
+        <style>.footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            justify-content: space-around;
+        }</style>
+        <style>.foot-list {
+            float: left;
+            width: 200px;
+        }</style>
+        <style>.foot-list-title {
+            font-weight: 400;
+            margin-bottom: 10px;
+            padding: 0.5em 0;
+        }</style>
+        <style>.foot-list-item {
+            color: rgba(238, 238, 238, 0.8);
+            font-size: 0.8em;
+            padding: 0.5em 0;
+        }</style>
+        <style>.foot-list-item:hover {
+            color: rgba(238, 238, 238, 1);
+        }</style>
+        <style>.foot-form-cont {
+            width: 300px;
+            float: right;
+        }</style>
+        <style>.foot-form-title {
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 400;
+            margin-bottom: 10px;
+            padding: 0.5em 0;
+            text-align: right;
+            font-size: 2em;
+        }</style>
+        <style>.foot-form-desc {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 20px;
+            text-align: right;
+            margin-bottom: 15px;
+        }</style>
+        <style>.form {
+            border-radius: 3px;
+            padding: 10px 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }</style>
+        <style>.input {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 7px 10px;
+            border-radius: 2px;
+            color: #fff;
+            background-color: #554c57;
+            border: none;
+        }</style>
+        <style>.textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 7px 10px;
+            border-radius: 2px;
+            color: #fff;
+            background-color: #554c57;
+            border: none;
+        }</style>
+        <style>.select {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 7px 10px;
+            border-radius: 2px;
+            color: #fff;
+            background-color: #554c57;
+            border: none;
+            height: 30px;
+        }</style>
+        <style>.sub-input {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 7px 10px;
+            border-radius: 2px;
+            color: #fff;
+            background-color: #554c57;
+            border: none;
+        }</style>
+        <style>.label {
+            width: 100%;
+            display: block;
+        }</style>
+        <style>.button {
+            width: 100%;
+            margin: 15px 0;
+            background-color: #785580;
+            border: none;
+            color: #fff;
+            border-radius: 2px;
+            padding: 7px 10px;
+            font-size: 1em;
+            cursor: pointer;
+        }</style>
+        <style>.sub-btn {
+            width: 100%;
+            margin: 15px 0;
+            background-color: #785580;
+            border: none;
+            color: #fff;
+            border-radius: 2px;
+            padding: 7px 10px;
+            font-size: 1em;
+            cursor: pointer;
+        }</style>
+        <style>.sub-btn:hover {
+            background-color: #91699a;
+        }</style>
+        <style>.sub-btn:active {
+            background-color: #573f5c;
+        }</style>
+        <style>.blk-row::after {
+            content: "";
+            clear: both;
+            display: block;
+        }</style>
+        <style>.blk-row {
+            padding: 10px;
+        }</style>
+        <style>.blk1 {
+            width: 100%;
+            padding: 10px;
+            min-height: 75px;
+        }</style>
+        <style>.blk2 {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            min-height: 75px;
+        }</style>
+        <style>.blk3 {
+            float: left;
+            width: 33.3333%;
+            padding: 10px;
+            min-height: 75px;
+        }</style>
+        <style>.blk37l {
+            float: left;
+            width: 30%;
+            padding: 10px;
+            min-height: 75px;
+        }</style>
+        <style>.blk37r {
+            float: left;
+            width: 70%;
+            padding: 10px;
+            min-height: 75px;
+        }</style>
+        <style>.heading {
+            padding: 10px;
+        }</style>
+        <style>.paragraph {
+            padding: 10px;
+        }</style>
+        <style>.bdg-sect {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            font-family: Helvetica, serif;
+            background-color: #fafafa;
+        }</style>
+        <style>.bdg-title {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 55px;
+            color: #555555;
+        }</style>
+        <style>.badges {
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }</style>
+        <style>.badge {
+            width: 290px;
+            font-family: Helvetica, serif;
+            background-color: white;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            font-weight: 100;
+            overflow: hidden;
+            text-align: center;
+        }</style>
+        <style>.badge-header {
+            height: 115px;
+            background-image: url("//grapesjs.com/img/bg-gr-v.png"), url("//grapesjs.com/img/work-desk.jpg");
+            background-position: left top, center center;
+            background-attachment: scroll, fixed;
+            overflow: hidden;
+        }</style>
+        <style>.blurer {
+            filter: blur(5px);
+        }</style>
+        <style>.badge-name {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }</style>
+        <style>.badge-role {
+            color: #777;
+            font-size: 1em;
+            margin-bottom: 25px;
+        }</style>
+        <style>.badge-desc {
+            font-size: 0.85rem;
+            line-height: 20px;
+        }</style>
+        <style>.badge-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            border: 5px solid #fff;
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+            margin-top: -75px;
+            position: relative;
+        }</style>
+        <style>.badge-body {
+            margin: 35px 10px;
+        }</style>
+        <style>.badge-foot {
+            color: #fff;
+            background-color: #a290a5;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            display: flex;
+            justify-content: center;
+        }</style>
+        <style>.badge-link {
+            height: 35px;
+            width: 35px;
+            line-height: 35px;
+            font-weight: 700;
+            background-color: #fff;
+            color: #a290a5;
+            display: block;
+            border-radius: 100%;
+            margin: 0 10px;
+        }</style>
+        <style>.quote {
+            color: #777;
+            font-weight: 300;
+            padding: 10px;
+            box-shadow: -5px 0 0 0 #ccc;
+            font-style: italic;
+            margin: 20px 30px;
+        }</style>
+    </div>
+    <div id="gjs-css-rules-992"></div>
+    <div id="gjs-css-rules-768">
+        <style>@media (max-width: 768px) {
+            .foot-form-cont {
+                width: 400px;
+            }
+        }</style>
+        <style>@media (max-width: 768px) {
+            .foot-form-title {
+                width: autopx;
+            }
+        }</style>
+    </div>
+    <div id="gjs-css-rules-480">
+        <style>@media (max-width: 480px) {
+            .foot-lists {
+                display: none;
+            }
+        }</style>
+    </div>
+</div>
+<div class="gjs-js-cont"></div>
+</body>
+</html>
