@@ -1,0 +1,66 @@
+{% load i18n static %}
+{% load grapesjs_tags %}
+
+<!DOCTYPE html>
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_settings_value "GRAPESJS_CORE_ASSETS" as GRAPESJS_CORE %}
+{% get_settings_value "GRAPESJS_PLUGIN_ASSETS" as GRAPESJS_PLUGINS %}
+
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
+<head>
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    {% block grapesjs_assets %}
+        <link rel="stylesheet" type="text/css"
+              href="{{ GRAPESJS_CORE|get_item:'css' }}">
+        <script type="text/javascript"
+                src="{{ GRAPESJS_CORE|get_item:"js" }}"></script>
+    {% endblock %}
+    {% block grapesjs_plugins %}
+        {% for plugin_name, asset in  GRAPESJS_PLUGINS.items %}
+            {% if asset|contains:'css' %}
+                <link rel="stylesheet" type="text/css"
+                      href="{{ asset|get_item:'css' }}">
+            {% endif %}
+            {% if asset|contains:'js' %}
+                <script type="text/javascript"
+                        src="{{ asset|get_item:"js" }}"></script>
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
+    {% block extrahead %}{% endblock %}
+    {% block responsive %}
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    {% endblock %}
+    {% block blockbots %}
+        <meta name="robots" content="NONE,NOARCHIVE">
+    {% endblock %}
+</head>
+{% load i18n %}
+
+<body data-utc-offset="{% now "Z" %}">
+
+<!-- Container -->
+{% block grapesjs_container %}
+    <div id="{{ GRAPESJS_CONTAINER_ID }}"></div>
+{% endblock %}
+<!-- END Container -->
+{% block grapesjs %}
+    <script>
+        const editor = grapesjs.init({
+            // Indicate where to init the editor. You can also pass an HTMLElement
+            container: "#{{ GRAPESJS_CONTAINER_ID }}",
+            {{ GRAPESJS_CORE_SETTINGS }}
+            plugins: [{% for plugin_name in GRAPESJS_PLUGINS.keys %}'{{ plugin_name }}', {% empty %}{% endfor %}]
+        });
+    </script>
+{% endblock %}
+</body>
+</html>
