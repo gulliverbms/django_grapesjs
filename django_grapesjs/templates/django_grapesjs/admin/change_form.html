@@ -1,0 +1,111 @@
+{% extends "admin/change_form.html" %}
+{% load static grapesjs_tags %}
+
+{% block extrahead %}{{ block.super }}
+<script>
+    var replaceTagsInit = [
+        {% get_settings_value "REPLACE_INIT_IGNORE_TAGS" safe=True %},
+        {% get_settings_value "REPLACE_INIT_HIDDEN_TAGS" safe=True %}
+    ]
+    var replaceTagsSave = [
+        {% get_settings_value "REPLACE_SAVE_IGNORE_TAGS" safe=True %},
+        {% get_settings_value "REPLACE_SAVE_HIDDEN_TAGS" safe=True %}
+    ]
+
+    function normalizeData(value, save) {
+        /**
+        * I add this tag because grapesjs works only with markup.
+        * If in your resource only a django tags or jinja this will help you avoid mistakes
+        */
+        stringBegin = '<div temporary="">';
+        stringEnd = '</div label>';
+
+        if (save) {
+            return value.replace(stringBegin, '').replace(stringEnd, '')
+        }
+        else {
+            return stringBegin + value + stringEnd
+        }
+    }
+
+    function replaceTag(value, replaceTagsArray) {
+        for (var i=0; i<replaceTagsArray.length; i++) {
+            for (var tag in replaceTagsArray[i]) {
+                if (replaceTagsArray[i].hasOwnProperty(tag)) {
+                    value = value.replace(new RegExp(tag, 'g'), replaceTagsArray[i][tag]);
+                }
+            }
+        }
+        return value;
+    }
+</script>
+{% endblock %}
+
+{% block admin_change_form_document_ready %}{{ block.super }}
+<script>
+    function getCssGrapesjs(value, css) {
+        regexStyle = /(<style grapesjs type=.+)((\s+)|(\S+)|(\r+)|(\n+))(.+)((\s+)|(\S+)|(\r+)|(\n+))(<\/style>)/g;
+        return value.replace(regexStyle, "") + "<style grapesjs type=\"text/css\">" + css + "</style>";
+    }
+
+    function setHtmlInTheField() {
+        all_id = document.getElementsByName("get-all-id");
+
+        for (i=0; i<all_id.length; i++){
+            field = document.getElementById(all_id[i].textContent);
+
+            htmlGrapesjs = replaceTag(
+                this["editor_" + all_id[i].textContent].getHtml(),
+                replaceTagsSave
+            );
+
+            if ({% get_settings_value "GRAPESJS_SAVE_CSS" %}) {
+                htmlGrapesjs = getCssGrapesjs(
+                    htmlGrapesjs, this["editor_" + all_id[i].textContent].getCss()
+                )
+            }
+
+            field.value = normalizeData(htmlGrapesjs, true);
+        }
+    }
+
+    function getSource(t, applyDjangoTag, postfixId) {
+        elementBlock = document.getElementById("gjs-" + postfixId).children[0];
+        elementBlock.setAttribute(
+            "style",
+            "pointer-events: none; background:#0000; z-index:100; opacity:0.4; filter:alpha(opacity=50)"
+        );
+        editor = this["editor_"+ postfixId];
+
+        django.jQuery.ajax({
+            url: "{% url 'dgjs_get_template' %}",
+            data: {
+                "template_name": t.value,
+                "apply_django_tag": applyDjangoTag
+            },
+
+            success: function(data){
+                editor.setComponents(
+                    replaceTag(
+                        normalizeData(data),
+                        replaceTagsInit
+                    )
+                );
+                elementBlock.removeAttribute('style')
+            }
+        });
+    }
+
+    (function($) {
+        $('input[name="_save"]').on('click', function() {
+            setHtmlInTheField()
+        });
+        $('input[name="_continue"]').on('click', function() {
+            setHtmlInTheField()
+        });
+        $('input[name="_addanother"]').on('click', function() {
+            setHtmlInTheField()
+        });
+    })(django.jQuery);
+</script>
+{% endblock %}
