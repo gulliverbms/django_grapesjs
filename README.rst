@@ -63,6 +63,14 @@ Attach view mixin for processing GrapesJS template data .. code-block:: python
         pass
 
 
+Add routes to the main view and several processing ones .. code-block:: python
+
+    urlpatterns = [
+        re_path('^template/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.as_view(), name='template'),
+        re_path('^template/save/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.saveTemplate, name='template-save'),
+        re_path('^template/load/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.loadTemplate, name='template-load'),
+    ]
+
 For admin usage:
 ================
 
