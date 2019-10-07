@@ -62,6 +62,5 @@ docs/_build/
 target/
 
 db.*
-TODO.*
 example/static/
 
