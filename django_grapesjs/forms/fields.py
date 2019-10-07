@@ -1,8 +1,8 @@
 from django import forms
 
-from django_grapesjs.forms import GrapesJsWidget
 from django_grapesjs.settings import BASE, GRAPESJS_DEFAULT_HTML, REDACTOR_CONFIG
 from django_grapesjs.utils import apply_string_handling
+from .widgets import GrapesJsWidget
 
 __all__ = (
     'GrapesJsField',
