@@ -135,10 +135,3 @@ class GrapesJSTemplateProcessingMixin(GrapesJSContextData):
         except model_class.DoesNotExist:
             data = {}
         return JsonResponse(status=HTTPStatus.OK, data=data)
-
-# class GetTemplate(TemplateView):
-#     def get(self, request, *args, **kwargs):
-#         template_name = request.GET['template_name']
-#         apply_django_tag = int(request.GET['apply_django_tag'])
-#
-#         return HttpResponse(get_render_html_value(template_name, apply_django_tag=apply_django_tag)())
