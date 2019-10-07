@@ -1,4 +1,3 @@
-import os.path
 from datetime import datetime
 
 __all__ = [
