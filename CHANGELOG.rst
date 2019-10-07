@@ -6,6 +6,13 @@ Changelog
 - Split requirements.txt to base/test/prod files.
 - Add django_npm
 - Update grapesjs via npm
+- Move from predefined npm source to user-defined cdn one
+- Add settings for GrapesJS library
+- Add client-side processing
+- Add supporting database storing
+- Add GrapesJS plugin supporting
+- Add basic forms for admin-side and client-side
+- Update example app.
 
 0.0.7 (2018-03-07)
 ---------------------------------
