@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import sys
 
+from django.conf.urls import url
+
 sys.path.append('../')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -28,8 +30,7 @@ SECRET_KEY = '5hv632^^8)r1h)oicyk3zai_g#fb_7&&ekb+a$3lji#y+tot@%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -126,3 +127,29 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+# Grapes JS Settings
+
+# Assets for grapes.js library
+GRAPESJS_CORE_ASSETS = {
+    'js': 'https://unpkg.com/grapesjs',
+    'css': 'https://unpkg.com/grapesjs/dist/css/grapes.min.css'
+}
+
+# A set of plugins with their assets
+GRAPESJS_PLUGIN_ASSETS = {
+    'grapesjs-blocks-basic': {
+        'js': 'https://cdn.jsdelivr.net/npm/grapesjs-blocks-basic@0.1.8/dist/grapesjs-blocks-basic.min.js',
+    },
+}
+
+GRAPESJS_MODEL = 'app.GrapesJSJSONModel'
+
+GRAPESJS_FORM = 'app.forms.GrapesJSBuilderForm'
+
+GRAPESJS_ALLOWED_ORIGIN_LIST = [
+    'http://127.0.0.1'
+]
+
+# Basic url for storing/loading template data
+GRAPESJS_URL_LOAD = '/template/load/'
+GRAPESJS_URL_STORE = '/template/save/'
