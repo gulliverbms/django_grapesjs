@@ -15,4 +15,3 @@ def get_render_html_value(default_html, apply_django_tag=False):
         return apply_string_handling(render_to_string(default_html))
 
     return _get_render_html_value
-

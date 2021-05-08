@@ -11,4 +11,3 @@ class GetTemplate(TemplateView):
         apply_django_tag = int(request.GET['apply_django_tag'])
 
         return HttpResponse(get_render_html_value(template_name, apply_django_tag=apply_django_tag)())
-

@@ -17,13 +17,14 @@ class GrapesJsField(forms.CharField):
     widget = GrapesJsWidget
 
     def __init__(self, default_html=GRAPESJS_DEFAULT_HTML, html_name_init_conf=REDACTOR_CONFIG[BASE],
-                 apply_django_tag=False, validate_tags=False, template_choices=None, *args, **kwargs):
+                 apply_django_tag=False, validate_tags=False, template_choices=None, editable=True, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.widget.default_html = default_html
         self.widget.html_name_init_conf = html_name_init_conf
         self.widget.apply_django_tag = apply_django_tag
         self.widget.template_choices = template_choices
+        self.widget.editable = editable
         self.validate_tags = validate_tags
 
     def validate(self, value):
@@ -35,4 +36,3 @@ class GrapesJsField(forms.CharField):
         value = apply_string_handling(value, 'apply_tag_save')
 
         return super().clean(value)
-

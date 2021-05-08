@@ -18,7 +18,11 @@
 <script type="text/javascript">
     this["initData" + "{{ widget.attrs.id }}"]['container'] = '#gjs-{{ widget.attrs.id }}';
     var editor_{{ widget.attrs.id }} = grapesjs.init(this["initData" + "{{ widget.attrs.id }}"]);
-
+    if (!{{widget.editable}}) {
+        const commands = editor_{{ widget.attrs.id }}.Commands
+        console.log('{{widget.editable}}')
+        commands.run("preview")
+    }
     if ({% get_settings_value "GRAPESJS_DEFAULT_MODELS_DATA" True %}) {
         try {
             editor_{{ widget.attrs.id }}.setComponents(
@@ -35,5 +39,3 @@
     }
 
 </script>
-
-
