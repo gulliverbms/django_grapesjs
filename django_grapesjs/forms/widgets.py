@@ -49,7 +49,7 @@ class GrapesJsWidget(forms.Textarea):
             'html_name_init_conf': self.html_name_init_conf,
             'template_choices': self.template_choices,
             'apply_django_tag': int(self.apply_django_tag),
-            'editable': int(self.editable),
+            'wysiwyg': int(self.wysiwyg),
         })
 
         return context
