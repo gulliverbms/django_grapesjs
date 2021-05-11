@@ -13,6 +13,9 @@ REGEX_MAKEUP_SAVE = '<%s.*?><div hidden="">{#(.*?)#}</div>.*?</%s>' % (NAME_MAKE
 
 class ApplyMakeupTag(object):
     def apply_tag_init(self, string):
+        """
+        This method applies the makeup tag (comment and make hidden all the code inside this tag) during the template init
+        """
         strings_to_render = re.findall(REGEX_MAKEUP_TAG, string)
 
         replace_to_strings = map(
@@ -26,10 +29,12 @@ class ApplyMakeupTag(object):
         return reduce(lambda s, r: re.sub(REGEX_MAKEUP_INIT, r, s, 1), replace_to_strings, string)
 
     def apply_tag_save(self, string):
+        """
+        This method applies the makeup tag (uncomment all the code inside this tag) during saving template to database
+        """
         substrings_to_save = [
             '<%s>%s</%s>' % (NAME_MAKEUP_TAG, sub, NAME_MAKEUP_TAG)
                 for sub in re.findall(REGEX_MAKEUP_SAVE, string)
         ]
 
         return reduce(lambda s, r: re.sub(REGEX_MAKEUP_SAVE, r, s, 1), substrings_to_save, string)
-

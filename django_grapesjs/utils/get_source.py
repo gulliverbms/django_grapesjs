@@ -6,6 +6,9 @@ __all__ = ('get_render_html_value', )
 
 
 def get_render_html_value(default_html, apply_django_tag=False):
+    """
+    Get HTML value of template to render with string handlers
+    """
     def _get_render_html_value():
         if not apply_django_tag:
             return apply_string_handling(
@@ -15,4 +18,3 @@ def get_render_html_value(default_html, apply_django_tag=False):
         return apply_string_handling(render_to_string(default_html))
 
     return _get_render_html_value
-

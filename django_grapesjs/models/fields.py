@@ -12,11 +12,11 @@ __all__ = (
 
 class GrapesJsHtmlField(models.TextField):
     """
-    Model field with support grapesjs.
+    Model field with support of grapesjs.
 
     """
     def __init__(self, default_html=GRAPESJS_DEFAULT_HTML, redactor_config=BASE,
-                 apply_django_tag=False, validate_tags=False, template_choices=None, **kwargs):
+                 apply_django_tag=False, validate_tags=False, template_choices=None, wysiwyg=True, **kwargs):
         if kwargs.get('choices'):
             raise ValueError(
                 "use 'template_choices' instead of 'choices' in the '%s'" % self.__class__.__name__
@@ -31,6 +31,7 @@ class GrapesJsHtmlField(models.TextField):
             'apply_django_tag': apply_django_tag,
             'validate_tags': validate_tags,
             'template_choices': template_choices,
+            'wysiwyg': wysiwyg,
             'form_class': GrapesJsField,
             'widget': GrapesJsWidget,
         }
@@ -52,4 +53,3 @@ class GrapesJsHtmlField(models.TextField):
             raise SystemCheckError('\nERROR:\n%s: %s' % (self.__class__.__name__, error_info, ))
 
         return True
-
