@@ -99,4 +99,3 @@ class GrapesJsWidgetTestCase(test.TestCase):
             setattr(widget, attr, value)
 
         self.assertDictEqual(data, widget.get_context('name', 'value', 'attrs'))
-

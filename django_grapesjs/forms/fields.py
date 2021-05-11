@@ -11,7 +11,7 @@ __all__ = (
 
 class GrapesJsField(forms.CharField):
     '''
-    Form field with support grapesjs.
+    Form field with support of grapesjs.
     '''
 
     widget = GrapesJsWidget

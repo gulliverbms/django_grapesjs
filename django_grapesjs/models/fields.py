@@ -12,7 +12,7 @@ __all__ = (
 
 class GrapesJsHtmlField(models.TextField):
     """
-    Model field with support grapesjs.
+    Model field with support of grapesjs.
 
     """
     def __init__(self, default_html=GRAPESJS_DEFAULT_HTML, redactor_config=BASE,
